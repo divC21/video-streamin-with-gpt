@@ -3,11 +3,32 @@ import Button from "./Button";
 import Input from "./Input";
 
 const SignIn = () => {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    fullName: "",
+  });
+  const [signUpForm, setSignUpForm] = useState(false);
 
   return (
-    <div className=" bg-gray-800 flex flex-col w-1/3 absolute top-52 p-8 justify-center justify-self-center align-middle rounded-md">
+    <div className=" bg-gray-800 bg-opacity-35 flex flex-col w-1/3 absolute top-52 p-8 justify-center justify-self-center align-middle rounded-md">
+      <h2 className="text-2xl">{signUpForm ? "Sign Up" : "Sign In"}</h2>
+      {signUpForm && (
+        <div className="py-4">
+          <label className="pr-3" htmlFor="username">
+            Full Name
+          </label>
+          <Input
+            id="username"
+            type="text"
+            value={formData.fullName}
+            onChange={(evt) => {
+              setFormData(...formData, { fullName: evt.target.value });
+            }}
+          />
+        </div>
+      )}
+
       <div className="py-4">
         <label className="pr-3" htmlFor="username">
           Username
@@ -15,9 +36,9 @@ const SignIn = () => {
         <Input
           id="username"
           type="text"
-          value={userName}
+          value={formData.email}
           onChange={(evt) => {
-            setUserName(evt.target.value);
+            setFormData(...formData, { email: evt.target.value });
           }}
         />
       </div>
@@ -28,18 +49,29 @@ const SignIn = () => {
         <Input
           id="password"
           type="password"
-          value={password}
+          value={formData.password}
           onChange={(evt) => {
-            setPassword(evt.target.value);
+            setFormData(...formData, { password: evt.target.value });
           }}
         />
       </div>
       <Button
         classNames="!w-full !m-0"
         type="primary"
-        name="Sign In"
+        name={signUpForm ? "Sign Up" : "Sign In"}
         onClick={() => {}}
       />
+      <p>
+        {signUpForm ? "Already a member?" : "New to the app?"}
+        <span
+          className="underline cursor-pointer"
+          onClick={() => {
+            setSignUpForm(!signUpForm);
+          }}
+        >
+          {`Sign ${signUpForm ? "Up" : "In"} here`}
+        </span>
+      </p>
     </div>
   );
 };
