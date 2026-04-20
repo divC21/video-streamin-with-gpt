@@ -1,9 +1,22 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Input from "./Input";
+import { signOut } from "firebase/auth";
+import { auth } from "../utils/firebase";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [searchInput, setSearchInput] = useState("");
+  const navigate = useNavigate();
+  const userInfo = useSelector((state) => state.userReducer);
+
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        navigate("/");
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <header className="flex justify-between p-5 bg-gray-800  text-white">
       <span className="text-xl font-bold self-center">"LOGO"</span>
@@ -20,10 +33,23 @@ const Header = () => {
         <li className="px-2 mx-1 self-center">
           <Link to="/">Home</Link>
         </li>
-        <li className="px-2 mx-1 self-center">
-          <Link to="/signin">&copy; Sign In</Link>
+        {window.location.pathname === "/signIn" && (
+          <li className="px-2 mx-1 self-center cursor-pointer">
+            <Link to="/"> Sign In</Link>
+          </li>
+        )}
+        <li className="px-2 mx-1 self-center cursor-pointer">
+          <img alt="profile-picture" src={userInfo.photoURL} />
         </li>
-        <li className="px-2 mx-1 self-center">Logout</li>
+        <li className="px-2 mx-1 self-center cursor-pointer">
+          {userInfo.displayName}
+        </li>
+        <li
+          className="px-2 mx-1 self-center cursor-pointer"
+          onClick={handleLogout}
+        >
+          Logout
+        </li>
       </ul>
     </header>
   );

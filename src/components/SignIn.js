@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import Button from "./Button";
 import Input from "./Input";
@@ -37,7 +38,17 @@ const SignIn = () => {
           .then((userCredential) => {
             // Signed up
             const user = userCredential.user;
-            console.log(user);
+            updateProfile(user, {
+              displayName: nameVal,
+              photoURL: "https://example.com/jane-q-user/profile.jpg",
+            })
+              .then(() => {
+                // Profile updated!
+                // ...
+              })
+              .catch((error) => {
+                setErrMsg(error.message);
+              });
             // ...
           })
           .catch((error) => {
