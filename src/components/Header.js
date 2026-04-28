@@ -8,7 +8,8 @@ import { useSelector } from "react-redux";
 const Header = () => {
   const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
-  const userInfo = useSelector((state) => state.userReducer);
+  const userInfo = useSelector((state) => state.userReducer) || {};
+  const { displayName = "", photoURL = "" } = userInfo;
 
   const handleLogout = () => {
     signOut(auth)
@@ -39,11 +40,9 @@ const Header = () => {
           </li>
         )}
         <li className="px-2 mx-1 self-center cursor-pointer">
-          <img alt="profile-picture" src={userInfo.photoURL} />
+          <img alt="profile-picture" src={photoURL} />
         </li>
-        <li className="px-2 mx-1 self-center cursor-pointer">
-          {userInfo.displayName}
-        </li>
+        <li className="px-2 mx-1 self-center cursor-pointer">{displayName}</li>
         <li
           className="px-2 mx-1 self-center cursor-pointer"
           onClick={handleLogout}

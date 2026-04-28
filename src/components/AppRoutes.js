@@ -11,7 +11,7 @@ const AppRoutes = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const { uid, email, displayName, photoURL } = user;
         dispatch(addUser({ uid, email, displayName, photoURL }));
@@ -21,7 +21,9 @@ const AppRoutes = () => {
         navigate("/");
       }
     });
+    return () => unsubscribe();
   }, []);
+
   return (
     <Routes>
       <Route path="/browse" element={<MainContainer />} />
