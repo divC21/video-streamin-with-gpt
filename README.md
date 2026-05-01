@@ -1,4 +1,4 @@
-# ChillFlix - Video Streaming App UI 
+# ChillFliX🍿 - Video Streaming App UI 
 This is a simple video streaming app UI built with React and Tailwind CSS. It fetches data from The Movie Database (TMDb) API to display currently playing movies.
 
 ## Features

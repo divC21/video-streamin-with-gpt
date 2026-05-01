@@ -104,15 +104,15 @@ const SignIn = () => {
           name={signUpForm ? "Sign Up" : "Sign In"}
           type="submit"
         />
-        <p>
-          {signUpForm ? "Already a member?" : "New to the app?"}
+        <p className="pt-2">
+          {signUpForm ? "Already a member?  " : "New to the app?  "}
           <span
             className="underline cursor-pointer"
             onClick={() => {
               setSignUpForm(!signUpForm);
             }}
           >
-            {`Sign ${!signUpForm ? "Up" : "In"} here`}
+            {`Sign ${!signUpForm ? "Up" : "In"} here!`}
           </span>
         </p>
       </form>
