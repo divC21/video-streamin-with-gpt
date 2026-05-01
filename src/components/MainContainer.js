@@ -5,16 +5,20 @@ import Card from "./Card";
 
 const MainContainer = () => {
   const nowPlayingMovies = useSelector(
-    (state) => state.movieReducer?.nowPlaying || 0,
+    (state) => state.movieReducer?.nowPlaying || [],
   );
   useNowPlayingMovies();
 
   console.log(nowPlayingMovies);
 
   return (
-    <div className="p-4">
+    <div className="">
       {nowPlayingMovies.length ? (
-        <VideoBg info={nowPlayingMovies[0]} />
+        <VideoBg
+          title={nowPlayingMovies[0].original_title}
+          desc={nowPlayingMovies[0].overview}
+          movieId={nowPlayingMovies[0].id}
+        />
       ) : (
         <div>Loading...</div>
       )}
