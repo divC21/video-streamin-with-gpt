@@ -10,7 +10,7 @@ const Header = () => {
   const navigate = useNavigate();
   const userInfo = useSelector((state) => state.userReducer) || {};
   const { displayName = "", photoURL = "" } = userInfo;
-
+  console.log(userInfo);
   const handleLogout = () => {
     signOut(auth)
       .then(() => {
@@ -21,35 +21,39 @@ const Header = () => {
   return (
     <header className="flex justify-between p-5 bg-gray-800  text-white">
       <span className="text-xl self-center font-fantasy italic">CHILLFLIX</span>
-      <ul className="flex justify-end w-2/3">
-        <li className="x-2 mx-1 w-1/2">
-          <Input
-            value={searchInput}
-            placeholder="Search for movies, shows, etc..."
-            onChange={(evt) => {
-              setSearchInput(evt.target.value);
-            }}
-          />
-        </li>
-        <li className="px-2 mx-1 self-center">
-          <Link to="/">Home</Link>
-        </li>
-        {window.location.pathname === "/signIn" && (
-          <li className="px-2 mx-1 self-center cursor-pointer">
-            <Link to="/"> Sign In</Link>
+      {Object.keys(userInfo).length ? (
+        <ul className="flex justify-end w-2/3">
+          <li className="x-2 mx-1 w-1/2">
+            <Input
+              value={searchInput}
+              placeholder="Search for movies, shows, etc..."
+              onChange={(evt) => {
+                setSearchInput(evt.target.value);
+              }}
+            />
           </li>
-        )}
-        <li className="px-2 mx-1 self-center cursor-pointer">
-          <img alt="profile-picture" src={photoURL} />
-        </li>
-        <li className="px-2 mx-1 self-center cursor-pointer">{displayName}</li>
-        <li
-          className="px-2 mx-1 self-center cursor-pointer"
-          onClick={handleLogout}
-        >
-          Logout
-        </li>
-      </ul>
+          <li className="px-2 mx-1 self-center">
+            <Link to="/">Home</Link>
+          </li>
+          {window.location.pathname === "/signIn" && (
+            <li className="px-2 mx-1 self-center cursor-pointer">
+              <Link to="/"> Sign In</Link>
+            </li>
+          )}
+          <li className="px-2 mx-1 self-center cursor-pointer">
+            <span className="text-3xl">👩🏻</span>
+          </li>
+          <li className="px-2 mx-1 self-center cursor-pointer">
+            {displayName}
+          </li>
+          <li
+            className="px-2 mx-1 self-center cursor-pointer"
+            onClick={handleLogout}
+          >
+            Logout
+          </li>
+        </ul>
+      ) : null}
     </header>
   );
 };
