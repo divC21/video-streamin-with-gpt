@@ -1,7 +1,7 @@
-# ChillFliX🍿 - Video Streaming App UI 
+# ✨MagixPlay✨ - Video Streaming App UI 
 This is a simple video streaming app UI built with React and Tailwind CSS. It fetches data from The Movie Database (TMDb) API to display currently playing movies.
 
-# ChillFliX🍿 link (deployed through Google Firebase)
+# ✨MagixPlay✨ link (deployed through Google Firebase)
 Visit : https://videostreaming-12d64.web.app/
 
 ## Features

@@ -20,7 +20,7 @@ const Header = () => {
   };
   return (
     <header className="flex justify-between p-5 bg-gray-800  text-white">
-      <span className="text-xl self-center font-mono">ChillFliX🍿</span>
+      <span className="text-xl self-center font-mono">✨MagixPlay✨</span>
       {Object.keys(userInfo).length ? (
         <ul className="flex justify-end w-2/3">
           <li className="x-2 mx-1 w-1/2">
