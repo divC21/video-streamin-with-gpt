@@ -1,7 +1,8 @@
 import OpenAI from "openai";
 
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+
 export const openai = new OpenAI({
-  apiKey: "dummy-key-replace-with-your-own-key",
+  apiKey: OPENAI_API_KEY,
   dangerouslyAllowBrowser: true,
 });
-// const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
