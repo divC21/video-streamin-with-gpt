@@ -73,7 +73,7 @@ const SignIn = () => {
     }
   };
   return (
-    <div className=" bg-gray-800 bg-opacity-35 flex flex-col w-1/3 absolute top-52 p-8 justify-center justify-self-center align-middle rounded-md">
+    <div className=" bg-gray-800 bg-opacity-35 flex flex-col sm:w-1/3 absolute top-52 p-8 justify-center justify-self-center align-middle rounded-md">
       <h2 className="text-2xl">{signUpForm ? "Sign Up" : "Sign In"}</h2>
       <form onSubmit={handleSignInSignUp}>
         {signUpForm && (

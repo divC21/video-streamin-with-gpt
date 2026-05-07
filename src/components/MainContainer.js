@@ -14,7 +14,7 @@ const MainContainer = () => {
   useNowPlayingMovies();
 
   return (
-    <div>
+    <div className="relative">
       {displayAskAiView ? (
         <AskAI />
       ) : (
@@ -28,7 +28,7 @@ const MainContainer = () => {
           ) : (
             <div>Loading...</div>
           )}
-          <div className="-mt-64 bg-black">
+          <div className="md:-mt-64 -mt-32 overflow-auto w-full absolute z-20 text-white before:absolute before:inset-0  before:bg-black before:z-[-1] before:mt-44">
             <MoviesList title="Now Playing" movies={nowPlayingMovies} />
             <MoviesList title="Trending" movies={nowPlayingMovies} />
             <MoviesList title="Top Rated" movies={nowPlayingMovies} />

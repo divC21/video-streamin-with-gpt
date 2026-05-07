@@ -26,11 +26,18 @@ const Header = () => {
     dispatch(toggleAskAiView());
   };
   return (
-    <header className="flex justify-between p-5 bg-gray-800  text-white">
-      <span className="text-xl self-center font-mono">✨MagixPlay✨</span>
+    <header className="flex relative w-full z-30 justify-between p-5 bg-gray-800  text-white">
+      <span
+        className="text-xl self-center font-mono"
+        onClick={() => {
+          navigate("/browse");
+        }}
+      >
+        ✨MagixPlay✨
+      </span>
       {Object.keys(userInfo).length ? (
         <ul className="flex justify-end w-2/3">
-          <li className="x-2 mx-1 w-1/2 self-center">
+          {/* <li className="x-2 mx-1 w-1/2 self-center">
             <Input
               value={searchInput}
               placeholder="Search for movies, shows, etc..."
@@ -38,23 +45,23 @@ const Header = () => {
                 setSearchInput(evt.target.value);
               }}
             />
-          </li>
-          <li className="px-2 mx-1 self-center">
-            <Button btnType="primary" name="ASK AI" onClick={handleAskAI} />
+          </li> */}
+          <li className="self-center">
+            <Button btnType="primary" name="AI Search" onClick={handleAskAI} />
           </li>
           {window.location.pathname === "/signIn" && (
-            <li className="px-2 mx-1 self-center cursor-pointer">
+            <li className="pr-1 mx-1 self-center cursor-pointer">
               <Link to="/"> Sign In</Link>
             </li>
           )}
-          <li className="px-2 mx-1 self-center cursor-pointer">
+          <li className="pr-1 mx-1 self-center cursor-pointer">
             <span className="text-3xl">👩🏻</span>
           </li>
-          <li className="px-2 mx-1 self-center cursor-pointer">
+          <li className="pr-1 mx-1 self-center cursor-pointer">
             {displayName}
           </li>
           <li
-            className="px-2 mx-1 self-center cursor-pointer"
+            className="pr-1 mx-1 self-center cursor-pointer"
             onClick={handleLogout}
           >
             Logout

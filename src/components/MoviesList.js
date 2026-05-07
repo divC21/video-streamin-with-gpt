@@ -3,9 +3,9 @@ import Card from "./Card";
 
 const MoviesList = ({ title, movies }) => {
   return (
-    <div className=" text-white">
-      <div className="p-4">
-        <h1 className="text-2xl">{title}</h1>
+    <div className=" text-white ">
+      <div className="p-4 w-full">
+        <h1 className="sm:text-2xl text-lg">{title}</h1>
       </div>
       <div className="flex overflow-auto">
         {movies.length ? (
