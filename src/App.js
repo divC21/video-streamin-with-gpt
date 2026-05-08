@@ -10,10 +10,10 @@ function App() {
   return (
     <div className="">
       <Header />
-      <div className="w-full h-[calc(100vh-120px)] bg-opacity-30 text-white bg-gradient-to-b from-purple-900 to-purple-100">
+      <div className="w-full min-h-screen bg-opacity-30 text-white bg-gradient-to-b from-purple-900 to-purple-100 overflow-x-hidden">
         {!isLoading ? <AppRoutes /> : <Loader />}
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

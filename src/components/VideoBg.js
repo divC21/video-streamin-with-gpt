@@ -15,7 +15,7 @@ const VideoBg = ({ title = "", desc = "", movieId }) => {
           <Button classNames="" btnType="secondary" name="More Info" />
         </div>
       </div>
-      <div className="w-screen pointer-events-none z-0">
+      <div className="w-screen pointer-events-none z-0 overflow-hidden">
         <iframe
           className="w-screen aspect-video object-cover scale-[135%]"
           src={`https://www.youtube.com/embed/${trailerInfo.key}?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1`}
